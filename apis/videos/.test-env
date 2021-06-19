@@ -1,0 +1,8 @@
+# .env file
+
+ELASTI_SEARCH_CONFIG=http://127.0.0.1:9200
+DB_NAME=video-api
+DB_CONNECTION_POOL=20
+PORT=5000
+LOG=true
+MIGRATE=false
