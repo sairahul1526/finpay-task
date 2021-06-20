@@ -16,3 +16,9 @@ Finpay Video Task
         - Video Parse
             - Worker to parse youtube results and store.
     - Parser is not written in API, since API is scalable and will have multiple servers running. Since we shouldn't run parser in every server, separated it.
+
+- Testing
+    - Run both projects (details are present in each project readme.txt)
+    - Keyword is cricket (change in parser project .test-env) 
+    - Add Youtube API Key (POST http://localhost:5000/admin/apikey?apikey=AIzaSyAVK3SDDPelxrblquSIZ5gCgMCSmNemDCE)
+    - Search for videos (GET http://localhost:5000/video/search?query=bangla%20cricket)
