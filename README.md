@@ -1,2 +1,0 @@
-# finpay-task
-# finpay-task

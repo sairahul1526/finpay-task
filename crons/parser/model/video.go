@@ -15,6 +15,7 @@ type Video struct {
 	PublishedAt  time.Time `json:"published_at"`
 }
 
+// InsertVideos - add videos into database
 func InsertVideos(videos []Video) error {
 	ids := []string{}
 	videosConvert := []interface{}{}

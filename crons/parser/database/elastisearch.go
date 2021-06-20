@@ -18,7 +18,7 @@ func ConnectElastisearch() {
 	}
 }
 
-// InsertIntoElastisearch - add documents into elasti search
+// InsertIntoElastisearch - bulk add documents into elasti search
 func InsertIntoElastisearch(index string, documents []interface{}, ids []string) error {
 	bulkRequest := elasticsearchClient.Bulk().Index(index)
 	for i, document := range documents {

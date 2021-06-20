@@ -18,12 +18,20 @@ func ConnectRedis() {
 	})
 }
 
-func GetPopFirstInRedisLists(key string) (string, error) {
-	return redisClient.RPop(context.TODO(), key).Result()
+func GetFromRedisSortedSets(key, min, max string, offset, count int64) ([]string, error) {
+	return redisClient.ZRangeByScore(context.TODO(), key, &redis.ZRangeBy{
+		Min:    min,
+		Max:    max,
+		Offset: offset,
+		Count:  count,
+	}).Result()
 }
 
-func AddToRedisLists(key, member string) {
-	redisClient.LPush(context.TODO(), key, member)
+func AddToRedisSortedSets(key string, score float64, member string) (int64, error) {
+	return redisClient.ZAdd(context.TODO(), key, &redis.Z{
+		Score:  score,
+		Member: member,
+	}).Result()
 }
 
 func GetRedisValue(key string) (string, error) {
