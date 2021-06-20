@@ -20,6 +20,7 @@ type Video struct {
 // SearchVideos - serch for title, description in videos via query
 func SearchVideos(query string) ([]Video, string, bool) {
 
+	// get data
 	searchResult, err := DB.SearchInElastisearch(query, CONSTANT.VideosIndex)
 	if err != nil {
 		fmt.Println("SearchVideos", query, err)
@@ -29,7 +30,6 @@ func SearchVideos(query string) ([]Video, string, bool) {
 		fmt.Println("SearchVideos", query, "response is nil")
 		return []Video{}, CONSTANT.StatusCodeServerError, false // default
 	}
-	fmt.Println(searchResult.TookInMillis, searchResult.Responses[0].Status)
 
 	sres := searchResult.Responses[0]
 	if sres.Hits == nil {
@@ -37,7 +37,7 @@ func SearchVideos(query string) ([]Video, string, bool) {
 		return []Video{}, CONSTANT.StatusCodeServerError, false // default
 	}
 
-	fmt.Println(len(sres.Hits.Hits))
+	// parse data to video model
 	videos := []Video{}
 	video := Video{}
 	for _, hit := range sres.Hits.Hits {

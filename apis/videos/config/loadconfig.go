@@ -19,6 +19,9 @@ func LoadConfig() {
 	}
 
 	ElastisearchConfig = os.Getenv("ELASTI_SEARCH_CONFIG")
+	RedisAddress = os.Getenv("REDIS_ADDRESS")
+	RedisPassword = os.Getenv("REDIS_PASSWORD")
+	RedisDB, _ = strconv.Atoi(os.Getenv("REDIS_DB"))
 	Log, _ = strconv.ParseBool(os.Getenv("LOG"))
 	Migrate, _ = strconv.ParseBool(os.Getenv("MIGRATE"))
 	Port = os.Getenv("PORT")

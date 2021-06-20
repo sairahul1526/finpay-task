@@ -16,6 +16,7 @@ func main() {
 
 	CONFIG.LoadConfig()
 	DB.ConnectElastisearch()
+	DB.ConnectRedis()
 
 	DB.AddIndex(CONSTANT.VideosIndex, CONSTANT.VideosIndexMapping) // add videos index if not available
 
